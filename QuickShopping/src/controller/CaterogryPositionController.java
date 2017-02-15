@@ -8,51 +8,41 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.TextField;
 
-public class ShopsController implements Initializable {
-
-    @FXML
-    private Button editBtn;
+public class CaterogryPositionController implements Initializable {
 
     @FXML
-    private Button removeBtn;
+    private Button btnBack;
 
     @FXML
-    private Button backBtn;
+    private TextField shopData;
 
     @FXML
-    private Button confirmBtn;
+    private TableColumn<?, ?> name;
 
     @FXML
-    private Button addBtn;
+    private TableColumn<?, ?> position;
 
     @FXML
-    private TableColumn<?, ?> shopsList;
+    private Button btnUp;
 
     @FXML
-    void addShop(ActionEvent event) {
+    private Button btnDown;
+
+    @FXML
+    void upCategory(ActionEvent event) {
 
     }
 
     @FXML
-    void removeShop(ActionEvent event) {
+    void downCategory(ActionEvent event) {
 
     }
 
     @FXML
-    void editShop(ActionEvent event) {
-
-    }
-
-    @FXML
-    void back(ActionEvent event) {
+    void backBtn(ActionEvent event) {
     	MainController.setSceneMainWindow();
-    }
-
-    @FXML
-    void confitm(ActionEvent event) {
-
     }
 
 	@Override

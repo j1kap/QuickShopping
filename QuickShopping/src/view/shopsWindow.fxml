@@ -5,13 +5,17 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ShopsController">
    <children>
-      <Button fx:id="addBtn" layoutX="60.0" layoutY="200.0" mnemonicParsing="false" onAction="#addShop" text="Dodaj" />
-      <Button fx:id="removeBtn" layoutX="148.0" layoutY="200.0" mnemonicParsing="false" onAction="#removeShop" text="Usuń" />
-      <Button fx:id="editBtn" layoutX="222.0" layoutY="200.0" mnemonicParsing="false" onAction="#editShop" text="Edytuj" />
-      <Button fx:id="backBtn" layoutX="354.0" layoutY="200.0" mnemonicParsing="false" onAction="#back" text="Powrót" />
-      <Button fx:id="confirmBtn" layoutX="466.0" layoutY="200.0" mnemonicParsing="false" onAction="#confitm" text="Zapisz" />
+      <Button fx:id="addBtn" layoutX="66.0" layoutY="307.0" mnemonicParsing="false" onAction="#addShop" text="Dodaj" />
+      <Button fx:id="removeBtn" layoutX="154.0" layoutY="307.0" mnemonicParsing="false" onAction="#removeShop" text="Usuń" />
+      <Button fx:id="editBtn" layoutX="228.0" layoutY="307.0" mnemonicParsing="false" onAction="#editShop" text="Edytuj" />
+      <Button fx:id="backBtn" layoutX="360.0" layoutY="307.0" mnemonicParsing="false" onAction="#back" text="Powrót" />
+      <Button fx:id="confirmBtn" layoutX="472.0" layoutY="307.0" mnemonicParsing="false" onAction="#confitm" text="Zapisz" />
+      <TableView layoutX="54.0" layoutY="36.0" prefHeight="185.0" prefWidth="497.0">
+        <columns>
+          <TableColumn fx:id="shopsList" prefWidth="496.0" text="Sklep" />
+        </columns>
+      </TableView>
    </children>
 </Pane>

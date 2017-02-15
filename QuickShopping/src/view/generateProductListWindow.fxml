@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GenerateProductListController">
+   <children>
+      <TableView layoutX="33.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="allProduct" prefWidth="199.0" text="Lista produktów" />
+        </columns>
+      </TableView>
+      <TableView layoutX="300.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="mainProduct" prefWidth="199.0" text="Twoje produkty" />
+        </columns>
+      </TableView>
+      <ChoiceBox layoutX="33.0" layoutY="26.0" prefHeight="31.0" prefWidth="477.0" />
+      <Button fx:id="deleteItem" layoutX="214.0" layoutY="304.0" mnemonicParsing="false" onAction="#deleteItem" text="Usuń z listy" />
+      <Button fx:id="generateList" layoutX="356.0" layoutY="304.0" mnemonicParsing="false" onAction="#generateProductsList" text="Generuj liste" />
+      <Button fx:id="back" layoutX="500.0" layoutY="304.0" mnemonicParsing="false" onAction="#back" text="Powrót" />
+      <Button fx:id="addToMainList" layoutX="57.0" layoutY="304.0" mnemonicParsing="false" onAction="#addToList" text="Dodaj do listy" />
+   </children>
+</Pane>

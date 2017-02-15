@@ -8,40 +8,34 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
-import javafx.scene.image.ImageView;
 
-public class ShopsController implements Initializable {
-
-    @FXML
-    private Button editBtn;
+public class GenerateProductListController implements Initializable {
 
     @FXML
-    private Button removeBtn;
+    private TableColumn<?, ?> allProduct;
 
     @FXML
-    private Button backBtn;
+    private Button deleteItem;
 
     @FXML
-    private Button confirmBtn;
+    private Button addToMainList;
 
     @FXML
-    private Button addBtn;
+    private Button generateList;
 
     @FXML
-    private TableColumn<?, ?> shopsList;
+    private Button back;
 
     @FXML
-    void addShop(ActionEvent event) {
+    private TableColumn<?, ?> mainProduct;
+
+    @FXML
+    void deleteItem(ActionEvent event) {
 
     }
 
     @FXML
-    void removeShop(ActionEvent event) {
-
-    }
-
-    @FXML
-    void editShop(ActionEvent event) {
+    void generateProductsList(ActionEvent event) {
 
     }
 
@@ -51,14 +45,13 @@ public class ShopsController implements Initializable {
     }
 
     @FXML
-    void confitm(ActionEvent event) {
+    void addToList(ActionEvent event) {
 
     }
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 
 	}
-
 }

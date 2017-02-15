@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CaterogryPositionController">
+   <children>
+      <TextField fx:id="shopData" layoutX="42.0" layoutY="34.0" prefHeight="37.0" prefWidth="517.0" />
+      <TableView layoutX="51.0" layoutY="100.0" prefHeight="225.0" prefWidth="455.0">
+        <columns>
+          <TableColumn fx:id="position" prefWidth="109.0" text="Pozycja" />
+          <TableColumn fx:id="name" prefWidth="345.0" text="Kategoria" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnUp" layoutX="63.0" layoutY="347.0" mnemonicParsing="false" onAction="#upCategory" text="Góra" />
+      <Button fx:id="btnDown" layoutX="168.0" layoutY="347.0" mnemonicParsing="false" onAction="#downCategory" text="Dół" />
+      <Button fx:id="btnBack" layoutX="372.0" layoutY="347.0" mnemonicParsing="false" onAction="#backBtn" text="Powrót" />
+   </children>
+</Pane>
