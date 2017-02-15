@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class MainController extends Application {
 
-	public static final String APP_NAME = "Pensum manager";
+	public static final String APP_NAME = "Quick Shoppingr";
 
 	//okno aplikacji
     private static Stage window;
@@ -21,6 +21,7 @@ public class MainController extends Application {
     private Parent parentShopsWindowPane;
     private Parent parentCategoryPositionWindowPane;
     private Parent parentGenerateProductListWindowPane;
+    private Parent parentAddShopWindow;
 
     //okno w ktorym znajduje sie layout
     private static Scene sceneMainWindow;
@@ -28,6 +29,7 @@ public class MainController extends Application {
     private static Scene sceneShopsWindow;
     private static Scene sceneCategoryPositionWindow;
     private static Scene sceneGenerateProductListWindow;
+    private static Scene sceneAddShopWindow;
 
 
 	@Override
@@ -41,6 +43,7 @@ public class MainController extends Application {
 		sceneShopsWindow = new Scene(parentShopsWindowPane);
 		sceneCategoryPositionWindow = new Scene(parentCategoryPositionWindowPane);
 		sceneGenerateProductListWindow = new Scene(parentGenerateProductListWindowPane);
+		sceneAddShopWindow = new Scene(parentAddShopWindow);
 
 		window.setScene(sceneMainWindow);
 		window.setTitle(APP_NAME);
@@ -56,6 +59,7 @@ public class MainController extends Application {
 			parentShopsWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/view/shopsWindow.fxml"));
 			parentCategoryPositionWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/view/categoryPositionWindow.fxml"));
 			parentGenerateProductListWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/view/generateProductListWindow.fxml"));
+			parentAddShopWindow = (Parent) FXMLLoader.load(getClass().getResource("/view/addShopWindow.fxml"));
 
 		} catch (IOException e) {
 			System.out.println("Blad podczas wczytywania fxml");
@@ -77,6 +81,10 @@ public class MainController extends Application {
 
 	public static void setSceneGenerateProductList(){
 		window.setScene(sceneGenerateProductListWindow);
+	}
+
+	public static void setSceneAddShop(){
+		window.setScene(sceneAddShopWindow);
 	}
 
 }

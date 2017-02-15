@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddShopController">
+   <children>
+      <TextField fx:id="shopName" layoutX="146.0" layoutY="72.0" />
+      <TextField fx:id="shopAddress" layoutX="146.0" layoutY="162.0" />
+      <Button fx:id="save" layoutX="146.0" layoutY="251.0" mnemonicParsing="false" onAction="#add" text="Zapisz" />
+      <Button fx:id="back" layoutX="268.0" layoutY="251.0" mnemonicParsing="false" onAction="#back" text="Powrót" />
+      <Label layoutX="146.0" layoutY="38.0" text="Nazwa sklepu" />
+      <Label layoutX="146.0" layoutY="129.0" text="Adres" />
+   </children>
+</Pane>

@@ -32,7 +32,7 @@ public class ShopsController implements Initializable {
 
     @FXML
     void addShop(ActionEvent event) {
-
+    	MainController.setSceneAddShop();
     }
 
     @FXML
