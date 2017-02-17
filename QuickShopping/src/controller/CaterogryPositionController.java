@@ -15,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import model.Category;
 import model.Shop;
 import service.ShopService;
@@ -33,12 +34,17 @@ public class CaterogryPositionController implements Initializable {
     @FXML
     private TableColumn<Category, String> name;
 
+    @FXML
+    private TableColumn<Category, Integer> id;
+
+    @FXML
+    private TableColumn<Category, Integer> position;
+
 
     @FXML
     private Label label;
 
-    @FXML
-    private TableColumn<Category, Integer> position;
+
 
     @FXML
     private Button btnUp;
@@ -58,16 +64,23 @@ public class CaterogryPositionController implements Initializable {
 
     @FXML
     void backBtn(ActionEvent event) {
-    	MainController.setSceneMainWindow();
+    	  Stage stage = (Stage) btnBack.getScene().getWindow();
+          stage.close();
+          MainController.setSceneShopsWindow();
     }
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//label.setText(service.getShop(6));
+		initializeWindow();
+	}
+
+	private void initializeWindow() {
+		label.setText(service.getShop(ShopsController.idEditShop));
+		//initializeTable();
 	}
 
 	private void initializeTable() {
-		List<Category> list = service.getCategoryForShop(ShopsController.idEditEmployee);
+		List<Category> list = service.getCategoryForShop(ShopsController.idEditShop);
 
 		ObservableList<Category> observableList = FXCollections.observableArrayList(list);
 		table.setItems(observableList);

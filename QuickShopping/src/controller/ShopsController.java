@@ -28,7 +28,6 @@ public class ShopsController implements Initializable {
 	MessagePanel message = new MessagePanel();
 
 	private Stage window;
-	protected static int idEditEmployee;
 	Parent parentEditEmployeeWindowPane;
 	Scene sceneEditEmployeeWindow;
 
