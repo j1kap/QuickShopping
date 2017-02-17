@@ -20,6 +20,7 @@ import service.ShopServiceImpl;
 public class ShopsController implements Initializable {
 
 	ShopService shopservice = new ShopServiceImpl();
+	MessagePanel message = new MessagePanel();
 
     @FXML
     private Button editBtn;
@@ -52,6 +53,12 @@ public class ShopsController implements Initializable {
 
     @FXML
     void removeShop(ActionEvent event) {
+
+    	if(tableShop.getSelectionModel().getSelectedItem() != null){
+    		shopservice.remove(tableShop.getSelectionModel().getSelectedItem());
+    	} else {
+    		message.showErrorMessage("Nie wybrano obiektu");
+    	}
 
     }
 
