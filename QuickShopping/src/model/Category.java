@@ -3,36 +3,48 @@ package model;
 public class Category {
 
 	private int id;
-	private int priority;
+
 	private String name;
+	private int idCategory;
+	private int priority;
 
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public int getPriority() {
-		return priority;
-	}
-
-	public void setPriority(int priority) {
-		this.priority = priority;
-	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public Category(int id, int priority, String name) {
-		this.id = id;
-		this.priority = priority;
-		this.name = name;
+	public int getIdCategory() {
+		return idCategory;
 	}
+	public void setIdCategory(int idCategory) {
+		this.idCategory = idCategory;
+	}
+	public int getPriority() {
+		return priority;
+	}
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
+	public Category(int id, String name, int idCategory, int priority) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.idCategory = idCategory;
+		this.priority = priority;
+	}
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + ", idCategory=" + idCategory + ", priority=" + priority + "]";
+	}
+
+
+
+
 }

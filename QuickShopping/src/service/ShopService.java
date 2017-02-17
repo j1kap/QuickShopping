@@ -17,4 +17,6 @@ public interface ShopService {
 
 	String getShop(int idEditEmployee);
 
+	public void moveCategory(int direction, int shopId, int categoryId);
+
 }

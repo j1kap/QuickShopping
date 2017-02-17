@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Category;
 import model.Shop;
 
 public class DatabaseServices {
@@ -104,7 +105,7 @@ public class DatabaseServices {
 			{
 				stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(query);
-				if (rs.next())
+				while (rs.next())
 				{
 					s = rs.getString(selectWhat);
 				}
@@ -232,7 +233,7 @@ public class DatabaseServices {
 			{
 				stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(query);
-				if (rs.next())
+				while (rs.next())
 				{
 					s = rs.getString(selectWhat);
 					list.add(s);
@@ -280,5 +281,45 @@ public class DatabaseServices {
 			}
 			return shops;
 		}
+
+		public List<Category> getCategoryFromDBList(String selectWhat, String fromWhere, String whereWhat) {
+			 Connection conn = connectionInit();
+	            PreparedStatement stmt = null;
+			String query = "SELECT "+selectWhat+" FROM "+fromWhere+" WHERE " +whereWhat;
+			List<Category> list = new ArrayList<>();
+			try
+			{
+				stmt = conn.prepareStatement(query);
+
+				ResultSet rs = stmt.executeQuery();
+
+				while (rs.next())
+				{
+					list.add(new Category(rs.getInt(1), rs.getString(2), rs.getInt(3) , rs.getInt(4)));
+
+				}
+
+			}
+			catch(SQLException se)
+			{
+				se.printStackTrace();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			} finally {
+
+				try {
+					conn.close();
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+
+			}
+			return list;
+		}
+
+
 
 }

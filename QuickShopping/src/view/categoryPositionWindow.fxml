@@ -8,9 +8,8 @@
    <children>
       <TableView fx:id="table" layoutX="51.0" layoutY="100.0" prefHeight="225.0" prefWidth="455.0">
         <columns>
-            <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
-          <TableColumn fx:id="name" prefWidth="159.0" text="Kategoria" />
-          <TableColumn fx:id="position" prefWidth="220.0" text="Pozycja" />
+          <TableColumn fx:id="name" prefWidth="205.0" text="Kategoria" />
+          <TableColumn fx:id="position" prefWidth="249.0" text="Pozycja" />
         </columns>
       </TableView>
       <Button fx:id="btnUp" layoutX="63.0" layoutY="347.0" mnemonicParsing="false" onAction="#upCategory" text="Góra" />

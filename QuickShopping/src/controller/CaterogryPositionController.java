@@ -23,51 +23,62 @@ import service.ShopServiceImpl;
 
 public class CaterogryPositionController implements Initializable {
 
-	static ShopService service = new ShopServiceImpl();
+	ShopService service = new ShopServiceImpl();
+	MessagePanel message = new MessagePanel();
 
-    @FXML
-    private Button btnBack;
+	@FXML
+	private Button btnBack;
 
-    @FXML
-    private TableView<Category> table;
+	@FXML
+	private TableView<Category> table;
 
-    @FXML
-    private TableColumn<Category, String> name;
+	@FXML
+	private TableColumn<Category, String> name;
 
-    @FXML
-    private TableColumn<Category, Integer> id;
+	@FXML
+	private TableColumn<Category, Integer> position;
 
-    @FXML
-    private TableColumn<Category, Integer> position;
+	@FXML
+	private Label label;
 
+	@FXML
+	private Button btnUp;
 
-    @FXML
-    private Label label;
+	@FXML
+	private Button btnDown;
 
+	@FXML
+	void upCategory(ActionEvent event) {
+		if (table.getSelectionModel().getSelectedItem() != null) {
 
+			Category category = table.getSelectionModel().getSelectedItem();
 
-    @FXML
-    private Button btnUp;
+			service.moveCategory(1, category.getId(), category.getIdCategory());
+			initializeTable();
+		} else {
+			message.showErrorMessage("Nie wybrano obiektu");
+		}
+	}
 
-    @FXML
-    private Button btnDown;
+	@FXML
+	void downCategory(ActionEvent event) {
+		if (table.getSelectionModel().getSelectedItem() != null) {
 
-    @FXML
-    void upCategory(ActionEvent event) {
+			Category category = table.getSelectionModel().getSelectedItem();
 
-    }
+			service.moveCategory(-1, category.getId(), category.getIdCategory());
+			initializeTable();
+		} else {
+			message.showErrorMessage("Nie wybrano obiektu");
+		}
+	}
 
-    @FXML
-    void downCategory(ActionEvent event) {
-
-    }
-
-    @FXML
-    void backBtn(ActionEvent event) {
-    	  Stage stage = (Stage) btnBack.getScene().getWindow();
-          stage.close();
-          MainController.setSceneShopsWindow();
-    }
+	@FXML
+	void backBtn(ActionEvent event) {
+		Stage stage = (Stage) btnBack.getScene().getWindow();
+		stage.close();
+		MainController.setSceneShopsWindow();
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -76,7 +87,8 @@ public class CaterogryPositionController implements Initializable {
 
 	private void initializeWindow() {
 		label.setText(service.getShop(ShopsController.idEditShop));
-		//initializeTable();
+
+		initializeTable();
 	}
 
 	private void initializeTable() {
@@ -88,4 +100,5 @@ public class CaterogryPositionController implements Initializable {
 		position.setCellValueFactory(new PropertyValueFactory<Category, Integer>("priority"));
 		name.setCellValueFactory(new PropertyValueFactory<Category, String>("name"));
 	}
+
 }
