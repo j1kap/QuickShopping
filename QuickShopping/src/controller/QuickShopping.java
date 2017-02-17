@@ -32,7 +32,7 @@ public class QuickShopping implements Initializable {
 
     @FXML
     void goToItems(ActionEvent event) {
-    	MainController.setSceneCategoryPosition();
+    	MainController.setSceneAddProduct();
     }
 
 	@Override

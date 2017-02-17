@@ -254,6 +254,38 @@ public class DatabaseServices {
 			return list;
 		}
 
+		public List<String> getStringFromDBList(String selectWhat, String fromWhere)
+		{
+		    Connection conn = connectionInit();
+	            Statement stmt = null;
+			String query = "SELECT "+selectWhat+" FROM "+fromWhere;
+			String s ="";
+			List<String> list = new ArrayList<>();
+			try
+			{
+				stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(query);
+				while (rs.next())
+				{
+					s = rs.getString(selectWhat);
+					list.add(s);
+
+				}
+				rs.close();
+				conn.close();
+				stmt.close();
+			}
+			catch(SQLException se)
+			{
+				se.printStackTrace();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+			return list;
+		}
+
 		public List<Shop> getAllShop(){
 			List<Shop> shops = new ArrayList<>();
 

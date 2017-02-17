@@ -5,6 +5,7 @@ import java.util.List;
 
 import controller.DatabaseServices;
 import model.Category;
+import model.Product;
 import model.Shop;
 
 public class ShopServiceImpl implements ShopService {
@@ -59,6 +60,17 @@ public class ShopServiceImpl implements ShopService {
 
 		databaseServices.updateDataToDB("quickShopping.t_sklepy_vs_kategorie","priorytet="+String.valueOf(currentPriority), "priorytet="+String.valueOf(newPriority)+" and id_sklepu="+String.valueOf(shopId)+" and id_kategorii="+String.valueOf(categoryId));
 		databaseServices.updateDataToDB("quickShopping.t_sklepy_vs_kategorie","priorytet="+String.valueOf(newPriority), "priorytet="+String.valueOf(currentPriority)+" and id_sklepu="+String.valueOf(shopId)+" and id_kategorii="+String.valueOf(categoryId));
+	}
+
+	@Override
+	public List<String> getCategoryName() {
+		return databaseServices.getStringFromDBList("nazwa", "quickShopping.t_kategorie");
+	}
+
+	@Override
+	public void addProduct(Product product) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

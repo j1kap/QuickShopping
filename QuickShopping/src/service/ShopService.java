@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 
 import model.Category;
+import model.Product;
 import model.Shop;
 
 public interface ShopService {
@@ -18,5 +19,9 @@ public interface ShopService {
 	String getShop(int idEditEmployee);
 
 	public void moveCategory(int direction, int shopId, int categoryId);
+
+	List<String> getCategoryName();
+
+	void addProduct(Product product);
 
 }
