@@ -87,4 +87,8 @@ public class MainController extends Application {
 		window.setScene(sceneAddShopWindow);
 	}
 
+	public static void hideMainWIndow(){
+        window.hide();
+    }
+
 }
