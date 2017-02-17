@@ -1,26 +1,38 @@
 package service;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import controller.DatabaseServices;
 import model.Shop;
 
 public class ShopServiceImpl implements ShopService {
 
+	DatabaseServices databaseServices;
+
+	public ShopServiceImpl() {
+		databaseServices = new DatabaseServices();
+	}
+
 	@Override
 	public void addShop(Shop shop) {
-		// TODO Auto-generated method stub
+
 
 	}
 
 	@Override
 	public List<Shop> getShopsList() {
-		// Tymczasowa zaslepka, zastapic polaczeniem z DB
-		List<Shop> shoList = new ArrayList<>();
-		shoList.add(new Shop("Biedra", "Polna1"));
-		shoList.add(new Shop("Kalflund", "Sklepowa 12"));
+		List<Shop> list = new ArrayList<>();
 
-		return shoList;
+		System.out.println(databaseServices.getRecordQuantityFromDB("quickShopping.t_sklepy"));
+
+
+		return list;
 	}
 
 }

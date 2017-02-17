@@ -13,14 +13,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import model.Shop;
 import service.ShopService;
 import service.ShopServiceImpl;
 
 public class ShopsController implements Initializable {
 
-	ShopService shopservice;
+	ShopService shopservice = new ShopServiceImpl();
 
     @FXML
     private Button editBtn;
@@ -63,6 +62,7 @@ public class ShopsController implements Initializable {
 
     @FXML
     void back(ActionEvent event) {
+    	initialShopList();
     	MainController.setSceneMainWindow();
     }
 
@@ -73,7 +73,7 @@ public class ShopsController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		shopservice = new ShopServiceImpl();
+
 		initialShopList();
 
 	}

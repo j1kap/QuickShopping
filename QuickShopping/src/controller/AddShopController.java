@@ -43,8 +43,6 @@ public class AddShopController implements Initializable {
 
 	}
 
-
-
 	public String getShopName() {
 		return shopName.getText();
 	}

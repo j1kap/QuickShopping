@@ -1,10 +1,16 @@
 package model;
 
-public class Shop {
+import java.io.Serializable;
+
+public class Shop implements Serializable {
 
 	private Integer id;
 	private String name;
 	private String address;
+
+	public Shop(String name){
+		this.name = name;
+	}
 
 
 	public Shop(String name, String address) {
@@ -36,4 +42,12 @@ public class Shop {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
+
+	@Override
+	public String toString() {
+		return name + ","+ address;
+	}
+
+
 }
