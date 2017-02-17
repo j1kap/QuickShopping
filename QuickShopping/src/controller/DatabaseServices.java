@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Shop;
+
 public class DatabaseServices {
 
 	   public Connection connectionInit()
@@ -126,13 +128,11 @@ public class DatabaseServices {
 			Connection conn = connectionInit();
 			PreparedStatement stmt = null;
 
-			String query = "INSERT INTO "+intoWhere+" VALUES ( ?,?,? )";
+			String query = "INSERT INTO "+intoWhere+" VALUES ( '" + insertWhat + "' , '" + insertWhat2+ "' )";
+
 			try
 			{
 				stmt = conn.prepareStatement(query);
-				stmt.setInt(1, 1);
-				stmt.setString(2, insertWhat);
-				stmt.setString(3, insertWhat2);
 				stmt.executeUpdate(query);
 
 			}
@@ -251,6 +251,34 @@ public class DatabaseServices {
 				e.printStackTrace();
 			}
 			return list;
+		}
+
+		public List<Shop> getAllShop(){
+			List<Shop> shops = new ArrayList<>();
+
+			String query = "select * from quickShopping.t_sklepy";
+			Connection conn = connectionInit();
+			PreparedStatement stmt = null;
+
+			try{
+
+				stmt = conn.prepareStatement(query);
+				ResultSet resultSet = stmt.executeQuery();
+
+				 while (resultSet.next()){
+					 shops.add(new Shop(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3)));
+		         }
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					conn.close();
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return shops;
 		}
 
 }

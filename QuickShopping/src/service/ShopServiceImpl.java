@@ -1,11 +1,5 @@
 package service;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import controller.DatabaseServices;
@@ -21,18 +15,12 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	public void addShop(Shop shop) {
-
-
+		databaseServices.insertDataToDB("quickShopping.t_sklepy (nazwa,adres )", shop.getName(), shop.getAddress());
 	}
 
 	@Override
 	public List<Shop> getShopsList() {
-		List<Shop> list = new ArrayList<>();
-
-		System.out.println(databaseServices.getRecordQuantityFromDB("quickShopping.t_sklepy"));
-
-
-		return list;
+		return databaseServices.getAllShop();
 	}
 
 }
