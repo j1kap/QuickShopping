@@ -13,17 +13,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Category;
-import model.Shop;
+import service.CategoryService;
+import service.CategoryServiceImpl;
 import service.ShopService;
 import service.ShopServiceImpl;
 
 public class CaterogryPositionController implements Initializable {
 
-	ShopService service = new ShopServiceImpl();
+	ShopService shopService = new ShopServiceImpl();
+	CategoryService categoryService = new CategoryServiceImpl();
 	MessagePanel message = new MessagePanel();
 
 	@FXML
@@ -53,7 +54,7 @@ public class CaterogryPositionController implements Initializable {
 
 			Category category = table.getSelectionModel().getSelectedItem();
 
-			service.moveCategory(-1, category.getId(), category.getIdCategory());
+			categoryService.moveCategory(-1, category.getId(), category.getIdCategory());
 			initializeTable();
 		} else {
 			message.showErrorMessage("Nie wybrano obiektu");
@@ -66,7 +67,7 @@ public class CaterogryPositionController implements Initializable {
 
 			Category category = table.getSelectionModel().getSelectedItem();
 
-			service.moveCategory(1, category.getId(), category.getIdCategory());
+			categoryService.moveCategory(1, category.getId(), category.getIdCategory());
 			initializeTable();
 		} else {
 			message.showErrorMessage("Nie wybrano obiektu");
@@ -87,13 +88,13 @@ public class CaterogryPositionController implements Initializable {
 	}
 
 	private void initializeWindow() {
-		label.setText(service.getShop(ShopsController.idEditShop));
+		label.setText(shopService.getShop(ShopsController.idEditShop));
 
 		initializeTable();
 	}
 
 	private void initializeTable() {
-		List<Category> list = service.getCategoryForShop(ShopsController.idEditShop);
+		List<Category> list = categoryService.getCategoryForShop(ShopsController.idEditShop);
 
 		ObservableList<Category> observableList = FXCollections.observableArrayList(list);
 		table.setItems(observableList);

@@ -1,13 +1,8 @@
 package service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import controller.DatabaseServices;
-import javafx.collections.ObservableList;
-import model.Category;
-import model.Product;
 import model.Shop;
 
 public class ShopServiceImpl implements ShopService {
@@ -42,38 +37,8 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	@Override
-	public List<Category> getCategoryForShop(int idEditEmployee) {
-		List<Category> categories = new ArrayList<>();
-		categories = databaseServices.getCategoryFromDBList("t_sklepy_vs_kategorie.id_sklepu, t_kategorie.nazwa, t_sklepy_vs_kategorie.id_kategorii, t_sklepy_vs_kategorie.priorytet", "quickShopping.t_sklepy_vs_kategorie, quickShopping.t_kategorie","id_sklepu="+String.valueOf(idEditEmployee)+" and t_kategorie.id_kategorii=t_sklepy_vs_kategorie.id_kategorii order by t_sklepy_vs_kategorie.priorytet");
-		return categories;
-	}
-
-	@Override
 	public String getShop(int idEditEmployee) {
 		return databaseServices.getStringFromDB("concat( nazwa, ' , ' , adres)", "quickShopping.t_sklepy", "id_sklepu = " + idEditEmployee);
-	}
-
-	public void moveCategory(int direction, int shopId, int categoryId)
-	{
-
-		int currentPriority = databaseServices.getIntFromDB("priorytet", "quickShopping.t_sklepy_vs_kategorie", "id_sklepu="+String.valueOf(shopId)+" and id_kategorii="+String.valueOf(categoryId));
-		int newPriority = currentPriority + direction;
-
-		int currentPriorityCategoryId = databaseServices.getIntFromDB("id_kategorii","quickShopping.t_sklepy_vs_kategorie","priorytet='"+String.valueOf(currentPriority)+"' and id_sklepu='"+String.valueOf(shopId)+"'");
-		int newPriorityCategoryId = databaseServices.getIntFromDB("id_kategorii","quickShopping.t_sklepy_vs_kategorie","priorytet='"+String.valueOf(newPriority)+"' and id_sklepu='"+String.valueOf(shopId)+"'");
-		databaseServices.updateDataToDB("quickShopping.t_sklepy_vs_kategorie","priorytet="+String.valueOf(newPriority), "id_sklepu='"+String.valueOf(shopId)+"' and id_kategorii='"+String.valueOf(currentPriorityCategoryId)+"'");
-		databaseServices.updateDataToDB("quickShopping.t_sklepy_vs_kategorie","priorytet="+String.valueOf(currentPriority), "id_sklepu='"+String.valueOf(shopId)+"' and id_kategorii='"+String.valueOf(newPriorityCategoryId)+"'");
-	}
-
-	@Override
-	public List<String> getCategoryName() {
-		return databaseServices.getStringFromDBList("nazwa", "quickShopping.t_kategorie");
-	}
-
-	@Override
-	public void addProduct(Product product) {
-		int categoryId = databaseServices.getIntFromDB("id_kategorii","quickShopping.t_kategorie","nazwa='"+product.getCategory()+"'");
-		databaseServices.insertDataToDB("quickShopping.t_produkty (nazwa, id_kategorii) ","'"+product.getName()+"',"+String.valueOf(categoryId));
 	}
 
 	@Override
@@ -81,26 +46,6 @@ public class ShopServiceImpl implements ShopService {
 		return databaseServices.getStringFromDBList("concat( nazwa, ' , ' , adres)", "quickShopping.t_sklepy");
 	}
 
-	@Override
-	public List<Product> getProductList() {
-		return databaseServices.getAllProducts();
-	}
 
-	@Override
-	public List<String> generateList(Shop shop, List<Product> myProductList) {
 
-		List<Integer> productsId = new ArrayList<>();
-
-		for(Product prod : myProductList){
-			productsId.add(prod.getId());
-		}
-
-		return databaseServices.sortProductByShopPriority(shop, productsId);
-	}
-
-	@Override
-	public void deleteProduct(Product item) {
-		databaseServices.deleteDataFromDB("quickShopping.t_produkty", "id_produktu="+item.getId());
-
-	}
 }

@@ -22,13 +22,19 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Product;
 import model.Shop;
+import service.GeneratorService;
+import service.GeneratorServiceImpl;
+import service.ProductService;
+import service.ProductServiceImpl;
 import service.ShopService;
 import service.ShopServiceImpl;
 
 public class GenerateProductListController implements Initializable {
 
 	MessagePanel message = new MessagePanel();
-	ShopService service = new ShopServiceImpl();
+	ShopService shopService = new ShopServiceImpl();
+	ProductService productService = new ProductServiceImpl();
+	GeneratorService generatorService = new GeneratorServiceImpl();
 
 	private Stage window;
 	Parent parenCustomListProductWindow;
@@ -85,7 +91,7 @@ public class GenerateProductListController implements Initializable {
     	if(myProductList.size() == 0 || combo.getSelectionModel().getSelectedItem() == null) {
     		message.showErrorMessage("Nie wybrano poprawnie produktu lub sklepu");
     	} else {
-    		generetedList = service.generateList(combo.getSelectionModel().getSelectedItem(),myProductList );
+    		generetedList = generatorService.generateList(combo.getSelectionModel().getSelectedItem(),myProductList );
     		shopName = combo.getSelectionModel().getSelectedItem().getName() + " , Adres: " + combo.getSelectionModel().getSelectedItem().getAddress() ;
 
     		try {
@@ -117,10 +123,10 @@ public class GenerateProductListController implements Initializable {
     	allProductList.clear();
     	//initializeProductList();
     	closeWindow();
-    	
+
 		MainController.showMainWindow();
     }
-	
+
 	void closeWindow(){
 		Stage stage = (Stage) back.getScene().getWindow();
 		stage.close();
@@ -152,7 +158,7 @@ public class GenerateProductListController implements Initializable {
 	}
 
 	private void initializeProductList() {
-		allProductList = service.getProductList();
+		allProductList = productService.getProductList();
 		setProductIntable(allProductList,productTable, allProduct);
 	}
 
@@ -165,7 +171,7 @@ public class GenerateProductListController implements Initializable {
 	}
 
 	void initialiceShopList(){
-		List<Shop> list = service.getShopsList();
+		List<Shop> list = shopService.getShopsList();
 		ObservableList<Shop> observableList = FXCollections.observableArrayList(list);
 		combo.setItems(observableList);
 	}

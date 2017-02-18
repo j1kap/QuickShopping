@@ -2,16 +2,10 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.ResourceBundle;
 
-import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,14 +18,19 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Product;
-import model.Shop;
+import service.CategoryService;
+import service.CategoryServiceImpl;
+import service.ProductService;
+import service.ProductServiceImpl;
 import service.ShopService;
 import service.ShopServiceImpl;
 
 public class AddProductController implements Initializable {
 
 	MessagePanel messagePanel = new MessagePanel();
-	ShopService service = new ShopServiceImpl();
+	ShopService shopService = new ShopServiceImpl();
+	CategoryService categoryService = new CategoryServiceImpl();
+	ProductService productService = new ProductServiceImpl();
 
     @FXML
     private TextField product;
@@ -75,7 +74,7 @@ public class AddProductController implements Initializable {
     @FXML
     void addProducy(ActionEvent event) throws IOException {
     	if (this.isNotEmptyFields()) {
-    		service.addProduct(new Product(product.getText(), category.getSelectionModel().getSelectedItem()));
+    		productService.addProduct(new Product(product.getText(), category.getSelectionModel().getSelectedItem()));
 			messagePanel.showInformationMessage("Produkt dodany");
 			backToWindow();
 		} else {
@@ -93,7 +92,7 @@ public class AddProductController implements Initializable {
 	}
 
 	private void initializeList() {
-		List<String> list = service.getCategoryName();
+		List<String> list = categoryService.getCategoryName();
 		ObservableList<String> observableList = FXCollections.observableArrayList(list);
 		category.setItems(observableList);
 	}

@@ -1,2 +1,5 @@
-Lista zakupow dla sklepu: Biedronka
-Pomidory
+Lista zakupow dla sklepu: asd , Adres: asd
+Mandarynki
+Musztarda
+Tabasco
+Majonez

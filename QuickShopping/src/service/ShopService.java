@@ -15,22 +15,7 @@ public interface ShopService {
 
 	void remove(Shop selectedItem);
 
-	List<Category> getCategoryForShop(int idEditEmployee);
-
 	String getShop(int idEditEmployee);
 
-	public void moveCategory(int direction, int shopId, int categoryId);
-
-	List<String> getCategoryName();
-
-	void addProduct(Product product);
-
 	List<String> getShopsName();
-
-	List<Product> getProductList();
-
-	List<String> generateList(Shop string, List<Product> myProductList);
-
-	void deleteProduct(Product item);
-
 }

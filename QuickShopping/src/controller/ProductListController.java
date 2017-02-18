@@ -19,6 +19,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Product;
+import service.ProductService;
+import service.ProductServiceImpl;
 import service.ShopService;
 import service.ShopServiceImpl;
 
@@ -26,6 +28,7 @@ public class ProductListController implements Initializable {
 
 	ShopService shopservice = new ShopServiceImpl();
 	MessagePanel message = new MessagePanel();
+	ProductService productService = new ProductServiceImpl();
 
     @FXML
     private TableView<Product> tabProduct;
@@ -67,7 +70,7 @@ public class ProductListController implements Initializable {
     void removeProduct(ActionEvent event) {
     	Product item = tabProduct.getSelectionModel().getSelectedItem();
     	if(item != null){
-    		shopservice.deleteProduct(item);
+    		productService.deleteProduct(item);
     		initializeProductList();
     	} else {
     		message.showErrorMessage("Nie wybrano produktu");
@@ -99,7 +102,7 @@ public class ProductListController implements Initializable {
 	}
 
 	private void initializeProductList() {
-		List<Product> list = shopservice.getProductList();
+		List<Product> list = productService.getProductList();
 
 		ObservableList<Product> observableList = FXCollections.observableArrayList(list);
 		tabProduct.setItems(observableList);
