@@ -112,11 +112,14 @@ public class GenerateProductListController implements Initializable {
 	@FXML
     void back(ActionEvent event) {
     	myProductList.clear();
-    	setProductIntable(myProductList, myProductTable,myProduct);
+    	//setProductIntable(myProductList, myProductTable,myProduct);
 
     	allProductList.clear();
-    	initializeProductList();
-    	MainController.setSceneMainWindow();
+    	//initializeProductList();
+
+    	Stage stage = (Stage) back.getScene().getWindow();
+		stage.close();
+		MainController.showMainWindow();
     }
 
     @FXML

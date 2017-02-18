@@ -27,6 +27,7 @@ public class ShopsController implements Initializable {
 	ShopService shopservice = new ShopServiceImpl();
 	MessagePanel message = new MessagePanel();
 
+
 	private Stage window;
 	Parent parentEditEmployeeWindowPane;
 	Scene sceneEditEmployeeWindow;
@@ -111,7 +112,6 @@ public class ShopsController implements Initializable {
 
 	@FXML
     void back(ActionEvent event) {
-    	initialShopList();
     	MainController.setSceneMainWindow();
     }
 
