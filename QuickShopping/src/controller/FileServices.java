@@ -11,13 +11,16 @@ public class FileServices {
 
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter("sortedList.txt"))) {
 
-			for (int i = 1 ; i <= sortedProductList.size() ; i++ )
+			bw.write("Lista zakupow dla sklepu: " + GenerateProductListController.shopName+"\n");
+
+			for (int i = 0 ; i < sortedProductList.size() ; i++ )
 			{
 				bw.write(sortedProductList.get(i) +"\n");
 			}
 		// no need to close it.
 			bw.close();
 			System.out.println("Done");
+
 		} catch (IOException e) {
 
 			e.printStackTrace();

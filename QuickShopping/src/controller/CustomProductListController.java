@@ -25,6 +25,7 @@ public class CustomProductListController implements Initializable {
 
 	FileServices fileServices = new FileServices();
 	ShopService service = new ShopServiceImpl();
+	MessagePanel message = new MessagePanel();
 
 	List<CustomProduct> list;
 
@@ -49,6 +50,11 @@ public class CustomProductListController implements Initializable {
     @FXML
     void save(ActionEvent event) {
     	fileServices.saveToTXT(GenerateProductListController.generetedList);
+    	message.showInformationMessage("Lista zostala wygenerowana");
+    	MainController.showMainWindow();
+    	MainController.setSceneMainWindow();
+    	Stage stage = (Stage) back.getScene().getWindow();
+        stage.close();
     }
 
     @FXML

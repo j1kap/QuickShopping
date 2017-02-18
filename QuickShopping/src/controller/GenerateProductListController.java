@@ -86,7 +86,7 @@ public class GenerateProductListController implements Initializable {
     		message.showErrorMessage("Nie wybrano poprawnie produktu lub sklepu");
     	} else {
     		generetedList = service.generateList(combo.getSelectionModel().getSelectedItem(),myProductList );
-    		shopName = combo.getSelectionModel().getSelectedItem().getName();
+    		shopName = combo.getSelectionModel().getSelectedItem().getName() + " , Adres: " + combo.getSelectionModel().getSelectedItem().getAddress() ;
 
     		try {
 				initializeWindow();
