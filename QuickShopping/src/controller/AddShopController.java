@@ -82,6 +82,8 @@ public class AddShopController implements Initializable {
 		Stage stage = (Stage) back.getScene().getWindow();
 		stage.close();
 
+	
+
 		String APP_NAME = "Shop";
         window = new Stage();
     	parentShopsWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/view/shopsWindow.fxml"));

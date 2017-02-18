@@ -29,26 +29,56 @@ public class QuickShopping implements Initializable {
     private static Scene sceneGenerateProductListWindow;
     private Parent parentGenerateProductListWindowPane;
 
+    private static Scene sceneShopsWindow;
+	private Parent parentShopsWindowPane;
+
+	private static Scene sceneListProductWindow;
+	private Parent parenListProductWindow;
+
+
     @FXML
     void goToLists(ActionEvent event) throws IOException {
+    	closeWindow();
+
     	String APP_NAME = "Shop";
         window = new Stage();
         parentGenerateProductListWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/view/generateProductListWindow.fxml"));
     	sceneGenerateProductListWindow = new Scene(parentGenerateProductListWindowPane);
-    	 window.setScene(sceneGenerateProductListWindow);
-         window.setTitle(APP_NAME);
-         window.show();
-		MainController.hideMainWIndow();
+    	window.setScene(sceneGenerateProductListWindow);
+        window.setTitle(APP_NAME);
+        window.show();
+
     }
 
     @FXML
-    void goToShops(ActionEvent event) {
-    	MainController.setSceneShopsWindow();
+    void goToShops(ActionEvent event) throws IOException {
+    	closeWindow();
+
+    	String APP_NAME = "Shop";
+        window = new Stage();
+    	parentShopsWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/view/shopsWindow.fxml"));
+		sceneShopsWindow = new Scene(parentShopsWindowPane);
+		window.setScene(sceneShopsWindow);
+        window.setTitle(APP_NAME);
+        window.show();
     }
 
     @FXML
-    void goToItems(ActionEvent event) {
-    	MainController.setSceneProductListWindow();
+    void goToItems(ActionEvent event) throws IOException {
+    	closeWindow();
+
+    	String APP_NAME = "Shop";
+        window = new Stage();
+        parenListProductWindow = (Parent) FXMLLoader.load(getClass().getResource("/view/productListWindow.fxml"));
+    	sceneListProductWindow = new Scene(parenListProductWindow);
+		window.setScene(sceneListProductWindow);
+        window.setTitle(APP_NAME);
+        window.show();
+    }
+
+    void closeWindow(){
+    	Stage stage = (Stage) mainListsButton.getScene().getWindow();
+		stage.close();
     }
 
 	@Override

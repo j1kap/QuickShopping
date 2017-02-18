@@ -101,5 +101,6 @@ public class ShopServiceImpl implements ShopService {
 	@Override
 	public void deleteProduct(Product item) {
 		databaseServices.deleteDataFromDB("quickShopping.t_produkty", "id_produktu="+item.getId());
+
 	}
 }

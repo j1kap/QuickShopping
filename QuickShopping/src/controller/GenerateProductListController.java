@@ -105,7 +105,7 @@ public class GenerateProductListController implements Initializable {
         window.setScene(sceneCustomListProductWindow);
         window.setTitle(APP_NAME);
         window.show();
-        MainController.hideMainWIndow();
+        closeWindow();
 
 	}
 
@@ -116,11 +116,15 @@ public class GenerateProductListController implements Initializable {
 
     	allProductList.clear();
     	//initializeProductList();
-
-    	Stage stage = (Stage) back.getScene().getWindow();
-		stage.close();
+    	closeWindow();
+    	
 		MainController.showMainWindow();
     }
+	
+	void closeWindow(){
+		Stage stage = (Stage) back.getScene().getWindow();
+		stage.close();
+	}
 
     @FXML
     void addToList(ActionEvent event) {

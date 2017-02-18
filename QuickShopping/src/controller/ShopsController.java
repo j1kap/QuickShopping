@@ -27,11 +27,6 @@ public class ShopsController implements Initializable {
 	ShopService shopservice = new ShopServiceImpl();
 	MessagePanel message = new MessagePanel();
 
-
-	private Stage window;
-	Parent parentEditEmployeeWindowPane;
-	Scene sceneEditEmployeeWindow;
-
 	public static int idEditShop;
 
     @FXML
@@ -55,10 +50,33 @@ public class ShopsController implements Initializable {
     @FXML
     private TableColumn<Shop, String> shopAddress;
 
+
+	private Stage window;
+	Parent parentEditEmployeeWindowPane;
+	Scene sceneEditEmployeeWindow;
+
+    private static Scene sceneAddShopsWindow;
+    private Parent parentAddShopsWindowPane;
+
+    private Parent parentMainWindowPane;
+    private static Scene sceneMainWindow;
+
     @FXML
-    void addShop(ActionEvent event) {
-    	MainController.setSceneAddShop();
-    	initialShopList();
+    void addShop(ActionEvent event) throws IOException {
+    	closeThisWindow();
+
+    	String APP_NAME = "Shop";
+    	window = new Stage();
+    	parentAddShopsWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/view/addShopWindow.fxml"));
+    	sceneAddShopsWindow = new Scene(parentAddShopsWindowPane);
+    	window.setScene(sceneAddShopsWindow);
+    	window.setTitle(APP_NAME);
+    	window.show();
+    }
+
+    void closeThisWindow(){
+    	Stage stage = (Stage) addBtn.getScene().getWindow();
+		stage.close();
     }
 
     @FXML
@@ -87,6 +105,8 @@ public class ShopsController implements Initializable {
 
 		if(idEditShop != 0 ){
 
+			closeThisWindow();
+
 			String APP_NAME = "Shop";
 	        window = new Stage();
 	        parentEditEmployeeWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/view/categoryPositionWindow.fxml"));
@@ -94,7 +114,6 @@ public class ShopsController implements Initializable {
 	        window.setScene(sceneEditEmployeeWindow);
 	        window.setTitle(APP_NAME);
 	        window.show();
-	        MainController.hideMainWIndow();
 		}
 	}
 
@@ -111,8 +130,16 @@ public class ShopsController implements Initializable {
 	}
 
 	@FXML
-    void back(ActionEvent event) {
-    	MainController.setSceneMainWindow();
+    void back(ActionEvent event) throws IOException {
+		closeThisWindow();
+
+    	String APP_NAME = "Shop";
+    	window = new Stage();
+    	parentMainWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/view/mainWindow.fxml"));
+    	sceneMainWindow = new Scene(parentMainWindowPane);
+    	window.setScene(sceneMainWindow);
+    	window.setTitle(APP_NAME);
+    	window.show();
     }
 
 

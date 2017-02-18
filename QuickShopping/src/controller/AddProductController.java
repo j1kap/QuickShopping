@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,10 +15,14 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import model.Product;
 import model.Shop;
 import service.ShopService;
@@ -40,18 +45,39 @@ public class AddProductController implements Initializable {
     @FXML
     private Button saveBtn;
 
+    private Stage window;
+	private static Scene sceneListProductWindow;
+	private Parent parenListProductWindow;
+
     @FXML
-    void back(ActionEvent event) {
-    	MainController.setSceneMainWindow();
+    void back(ActionEvent event) throws IOException {
+    	backToWindow();
 
     }
 
+    void backToWindow() throws IOException{
+    	closeWindow();
+
+    	String APP_NAME = "Shop";
+        window = new Stage();
+        parenListProductWindow = (Parent) FXMLLoader.load(getClass().getResource("/view/productListWindow.fxml"));
+    	sceneListProductWindow = new Scene(parenListProductWindow);
+		window.setScene(sceneListProductWindow);
+        window.setTitle(APP_NAME);
+        window.show();
+    }
+
+    void closeWindow(){
+    	Stage stage = (Stage) saveBtn.getScene().getWindow();
+		stage.close();
+    }
+
     @FXML
-    void addProducy(ActionEvent event) {
+    void addProducy(ActionEvent event) throws IOException {
     	if (this.isNotEmptyFields()) {
     		service.addProduct(new Product(product.getText(), category.getSelectionModel().getSelectedItem()));
 			messagePanel.showInformationMessage("Produkt dodany");
-
+			backToWindow();
 		} else {
 			messagePanel.showErrorMessage("Nie wszystkie pola zostaly wypelnione!");
 		}

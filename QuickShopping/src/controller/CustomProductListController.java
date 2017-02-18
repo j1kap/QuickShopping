@@ -1,6 +1,7 @@
 package controller;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -39,30 +43,45 @@ public class CustomProductListController implements Initializable {
     @FXML
     private Label shop;
 
-
-
     @FXML
     private Button save;
 
     @FXML
     private Button back;
 
+    private Stage window;
+    private Parent parentGenerateProductListWindowPane;
+    private static Scene sceneGenerateProductListWindow;
+
     @FXML
-    void save(ActionEvent event) {
+    void save(ActionEvent event) throws IOException {
     	fileServices.saveToTXT(GenerateProductListController.generetedList);
     	message.showInformationMessage("Lista zostala wygenerowana");
-    	MainController.showMainWindow();
-    	MainController.setSceneMainWindow();
-    	Stage stage = (Stage) back.getScene().getWindow();
-        stage.close();
+    	backToWindow();
     }
 
     @FXML
-    void back(ActionEvent event) {
-    	Stage stage = (Stage) back.getScene().getWindow();
-        stage.close();
-    	MainController.showMainWindow();
+    void back(ActionEvent event) throws IOException {
+    	backToWindow();
     }
+
+    void closeWindow(){
+    	Stage stage = (Stage) back.getScene().getWindow();
+		stage.close();
+    }
+
+    void backToWindow() throws IOException{
+    	closeWindow();
+
+    	String APP_NAME = "Shop";
+        window = new Stage();
+    	parentGenerateProductListWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/view/generateProductListWindow.fxml"));
+        sceneGenerateProductListWindow = new Scene(parentGenerateProductListWindowPane);
+		window.setScene(sceneGenerateProductListWindow);
+        window.setTitle(APP_NAME);
+        window.show();
+    }
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
