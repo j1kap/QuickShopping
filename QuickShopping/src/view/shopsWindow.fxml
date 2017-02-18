@@ -1,21 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ShopsController">
+<Pane maxHeight="400" maxWidth="600" minHeight="400" minWidth="600" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ShopsController" style="-fx-background-color: #FFFFFF;">
    <children>
-      <Button fx:id="addBtn" layoutX="66.0" layoutY="307.0" mnemonicParsing="false" onAction="#addShop" text="Dodaj" />
-      <Button fx:id="removeBtn" layoutX="154.0" layoutY="307.0" mnemonicParsing="false" onAction="#removeShop" text="Usuń" />
-      <Button fx:id="backBtn" layoutX="360.0" layoutY="307.0" mnemonicParsing="false" onAction="#back" text="Powrót" />
-      <TableView fx:id="tableShop" layoutX="54.0" layoutY="36.0" prefHeight="185.0" prefWidth="497.0">
+      <Button fx:id="addBtn" layoutX="84.0" layoutY="326.0" mnemonicParsing="false" onAction="#addShop" style="-fx-background-color: #FFFFFF;">
+      	<graphic>
+			<ImageView>
+				<image>
+					<Image url="@/pics/add.png" />
+				</image>
+			</ImageView>
+		</graphic>
+	  </Button>
+      <Button fx:id="removeBtn" layoutX="158.0" layoutY="326.0" mnemonicParsing="false" onAction="#removeShop" style="-fx-background-color: #FFFFFF;">
+      	<graphic>
+			<ImageView>
+				<image>
+					<Image url="@/pics/remove.png" />
+				</image>
+			</ImageView>
+		</graphic>
+	  </Button>
+      <Button fx:id="backBtn" layoutX="10.0" layoutY="326.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #FFFFFF;">
+      	<graphic>
+			<ImageView>
+				<image>
+					<Image url="@/pics/back.png" />
+				</image>
+			</ImageView>
+		</graphic>
+	  </Button>
+      <TableView fx:id="tableShop" layoutX="10.0" layoutY="64.0" prefHeight="260.0" prefWidth="580.0">
         <columns>
           <TableColumn fx:id="shopsName" prefWidth="235.0" text="Sklep nazwa" />
             <TableColumn fx:id="shopAddress" prefWidth="261.0" text="Adres" />
         </columns>
       </TableView>
-      <Button fx:id="editBtn" layoutX="235.0" layoutY="307.0" mnemonicParsing="false" onAction="#editCategory" text="Edytuj" />
+      <Button fx:id="editBtn" layoutX="232.0" layoutY="326.0" mnemonicParsing="false" onAction="#editCategory" style="-fx-background-color: #FFFFFF;">
+      	<graphic>
+			<ImageView>
+				<image>
+					<Image url="@/pics/edit.png" />
+				</image>
+			</ImageView>
+		</graphic>
+	  </Button>
+	  	        <Label layoutX="10.0" prefHeight="24.0" prefWidth="580.0" text="Sklepy ">
+         <font>
+            <Font name="Freestyle Script" size="32.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

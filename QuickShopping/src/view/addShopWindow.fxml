@@ -1,17 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddShopController">
+<Pane maxHeight="400" maxWidth="600" minHeight="400" minWidth="600" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF; " xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddShopController">
    <children>
-      <TextField fx:id="shopName" layoutX="146.0" layoutY="72.0" />
-      <TextField fx:id="shopAddress" layoutX="146.0" layoutY="162.0" />
-      <Button fx:id="save" layoutX="146.0" layoutY="251.0" mnemonicParsing="false" onAction="#add" text="Zapisz" />
-      <Button fx:id="back" layoutX="268.0" layoutY="251.0" mnemonicParsing="false" onAction="#back" text="Powrót" />
-      <Label layoutX="146.0" layoutY="38.0" text="Nazwa sklepu" />
-      <Label layoutX="146.0" layoutY="129.0" text="Adres" />
+      <TextField fx:id="shopName" layoutX="43.0" layoutY="83.0" prefHeight="34.0" prefWidth="527.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="shopAddress" layoutX="43.0" layoutY="162.0" prefHeight="34.0" prefWidth="527.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></TextField>
+      <Button fx:id="save" layoutX="84.0" layoutY="326.0" mnemonicParsing="false" onAction="#add" style="-fx-background-color: #FFFFFF;">
+      	<graphic>
+			<ImageView>
+				<image>
+					<Image url="@/pics/save.png" />
+				</image>
+			</ImageView>
+		</graphic>
+	  </Button>
+      <Button fx:id="back" layoutX="10.0" layoutY="326.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #FFFFFF;">
+      	<graphic>
+			<ImageView>
+				<image>
+					<Image url="@/pics/back.png" />
+				</image>
+			</ImageView>
+		</graphic>
+	  </Button>
+      <Label layoutX="43.0" layoutY="38.0" style="-fx-background-color: #FFFFFF;" text="Nazwa sklepu:">
+         <font>
+            <Font name="Freestyle Script" size="32.0" />
+         </font></Label>
+      <Label layoutX="43.0" layoutY="117.0" style="-fx-background-color: #FFFFFF;" text="Adres">
+         <font>
+            <Font name="Freestyle Script" size="32.0" />
+         </font></Label>
    </children>
 </Pane>

@@ -1,5 +1,3 @@
-Lista zakupow dla sklepu: asd , Adres: asd
-Mandarynki
-Musztarda
-Tabasco
+Lista zakupow dla sklepu: te , Adres: asd
 Majonez
+Ketchup

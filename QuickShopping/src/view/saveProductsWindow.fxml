@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SaveProductController">
+<Pane maxHeight="400" maxWidth="600" minHeight="400" minWidth="600" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SaveProductController" style="-fx-background-color: #FFFFFF;">
    <children>
-      <TextField fx:id="textField" layoutX="93.0" layoutY="66.0" prefHeight="42.0" prefWidth="410.0" />
-      <ChoiceBox fx:id="choiceBox" layoutX="98.0" layoutY="119.0" prefHeight="34.0" prefWidth="410.0" />
-      <Button fx:id="backBtn" layoutX="177.0" layoutY="324.0" mnemonicParsing="false" onAction="#backToWindow" text="Wróć" />
-      <Button fx:id="saveBtn" layoutX="277.0" layoutY="324.0" mnemonicParsing="false" onAction="#saveProduct" text="Zapisz" />
+      <TextField fx:id="textField" layoutX="93.0" layoutY="66.0" prefHeight="42.0" prefWidth="410.0" style="-fx-background-color: #FFFFFF;"/>
+      <ChoiceBox fx:id="choiceBox" layoutX="98.0" layoutY="119.0" prefHeight="34.0" prefWidth="410.0" style="-fx-background-color: #FFFFFF;" />
+      <Button fx:id="backBtn" layoutX="10.0" layoutY="326.0" mnemonicParsing="false" onAction="#backToWindow" style="-fx-background-color: #FFFFFF;">
+      	<graphic>
+			<ImageView>
+				<image>
+					<Image url="@/pics/back.png" />
+				</image>
+			</ImageView>
+		</graphic>
+	  </Button>
+      <Button fx:id="saveBtn" layoutX="84.0" layoutY="326.0" mnemonicParsing="false" onAction="#saveProduct" style="-fx-background-color: #FFFFFF;">
+      	<graphic>
+			<ImageView>
+				<image>
+					<Image url="@/pics/save.png" />
+				</image>
+			</ImageView>
+		</graphic>
+	  </Button>
    </children>
 </Pane>

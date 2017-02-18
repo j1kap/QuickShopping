@@ -5,10 +5,34 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#goToLists" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuickShopping">
+<Pane maxHeight="400" maxWidth="600" minHeight="400" minWidth="600" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuickShopping" style="-fx-background-color: #FFFFFF;">
    <children>
-      <Button fx:id="mainShopsButton" layoutX="90.0" layoutY="299.0" mnemonicParsing="false" onAction="#goToShops" text="Sklep" />
-      <Button fx:id="mainItemsButton" layoutX="252.0" layoutY="290.0" mnemonicParsing="false" onAction="#goToItems" text="Produkty" />
-      <Button fx:id="mainListsButton" layoutX="432.0" layoutY="290.0" mnemonicParsing="false" onAction="#goToLists" text="Lista zakupów" />
+      <Button fx:id="mainShopsButton" layoutX="90.0" layoutY="299.0" mnemonicParsing="false" onAction="#goToShops" style="-fx-background-color: #FFFFFF;">
+      	<graphic>
+			<ImageView>
+				<image>
+					<Image url="@/pics/shop.png" />
+				</image>
+			</ImageView>
+		</graphic>
+	  </Button>
+      <Button fx:id="mainItemsButton" layoutX="252.0" layoutY="290.0" mnemonicParsing="false" onAction="#goToItems" style="-fx-background-color: #FFFFFF;">
+      	<graphic>
+			<ImageView>
+				<image>
+					<Image url="@/pics/products.png" />
+				</image>
+			</ImageView>
+		</graphic>
+	  </Button>
+      <Button fx:id="mainListsButton" layoutX="432.0" layoutY="290.0" mnemonicParsing="false" onAction="#goToLists" style="-fx-background-color: #FFFFFF;">
+      	<graphic>
+			<ImageView>
+				<image>
+					<Image url="@/pics/checklist.png" />
+				</image>
+			</ImageView>
+		</graphic>
+	  </Button>
    </children>
 </Pane>
