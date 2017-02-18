@@ -53,7 +53,7 @@ public class CaterogryPositionController implements Initializable {
 
 			Category category = table.getSelectionModel().getSelectedItem();
 
-			service.moveCategory(1, category.getId(), category.getIdCategory());
+			service.moveCategory(-1, category.getId(), category.getIdCategory());
 			initializeTable();
 		} else {
 			message.showErrorMessage("Nie wybrano obiektu");

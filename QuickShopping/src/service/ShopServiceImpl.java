@@ -55,8 +55,10 @@ public class ShopServiceImpl implements ShopService {
 		int currentPriority = databaseServices.getIntFromDB("priorytet", "quickShopping.t_sklepy_vs_kategorie", "id_sklepu="+String.valueOf(shopId)+" and id_kategorii="+String.valueOf(categoryId));
 		int newPriority = currentPriority + direction;
 
-		databaseServices.updateDataToDB("quickShopping.t_sklepy_vs_kategorie","priorytet="+String.valueOf(currentPriority), "priorytet="+String.valueOf(newPriority)+" and id_sklepu="+String.valueOf(shopId)+" and id_kategorii="+String.valueOf(categoryId));
-		databaseServices.updateDataToDB("quickShopping.t_sklepy_vs_kategorie","priorytet="+String.valueOf(newPriority), "priorytet="+String.valueOf(currentPriority)+" and id_sklepu="+String.valueOf(shopId)+" and id_kategorii="+String.valueOf(categoryId));
+		int currentPriorityCategoryId = databaseServices.getIntFromDB("id_kategorii","quickShopping.t_sklepy_vs_kategorie","priorytet='"+String.valueOf(currentPriority)+"' and id_sklepu='"+String.valueOf(shopId)+"'");
+		int newPriorityCategoryId = databaseServices.getIntFromDB("id_kategorii","quickShopping.t_sklepy_vs_kategorie","priorytet='"+String.valueOf(newPriority)+"' and id_sklepu='"+String.valueOf(shopId)+"'");
+		databaseServices.updateDataToDB("quickShopping.t_sklepy_vs_kategorie","priorytet="+String.valueOf(newPriority), "id_sklepu='"+String.valueOf(shopId)+"' and id_kategorii='"+String.valueOf(currentPriorityCategoryId)+"'");
+		databaseServices.updateDataToDB("quickShopping.t_sklepy_vs_kategorie","priorytet="+String.valueOf(currentPriority), "id_sklepu='"+String.valueOf(shopId)+"' and id_kategorii='"+String.valueOf(newPriorityCategoryId)+"'");
 	}
 
 	@Override
@@ -66,8 +68,8 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	public void addProduct(Product product) {
-		// TODO Auto-generated method stub
-
+		int categoryId = databaseServices.getIntFromDB("id_kategorii","quickShopping.t_kategorie","nazwa='"+product.getCategory()+"'");
+		databaseServices.insertDataToDB("quickShopping.t_produkty (nazwa, id_kategorii) ","('"+product.getName()+"','"+String.valueOf(categoryId)+"')");
 	}
 
 	@Override
