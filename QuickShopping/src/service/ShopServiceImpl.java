@@ -72,8 +72,7 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	public List<String> getShopsName() {
-		// TODO Auto-generated method stub
-		return null;
+		return databaseServices.getStringFromDBList("concat( nazwa, ' , ' , adres)", "quickShopping.t_sklepy");
 	}
 
 }
