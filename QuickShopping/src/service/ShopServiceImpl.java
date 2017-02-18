@@ -100,7 +100,6 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	public void deleteProduct(Product item) {
-		// TODO Auto-generated method stub
-
+		databaseServices.deleteDataFromDB("quickShopping.t_produkty", "id_produktu="+item.getId());
 	}
 }
