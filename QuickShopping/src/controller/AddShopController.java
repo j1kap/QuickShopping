@@ -40,12 +40,12 @@ public class AddShopController implements Initializable {
 	private Parent parentShopsWindowPane;
 
 	@FXML
-	void add(ActionEvent event) {
+	void add(ActionEvent event) throws IOException {
 
 		if (this.isNotEmptyFields()) {
 			shopservice.addShop(new Shop(getShopName(), getShopAddress()));
 			messagePanel.showInformationMessage("Sklep dodany");
-
+			initializeShopsWindow();
 		} else {
 			messagePanel.showErrorMessage("Nie wszystkie pola zostaly wypelnione!");
 		}
@@ -67,6 +67,18 @@ public class AddShopController implements Initializable {
 
 	@FXML
 	void back(ActionEvent event) throws IOException {
+		initializeShopsWindow();
+
+		//MainController.setSceneShopsWindow();
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		messagePanel = new MessagePanel();
+		shopservice = new ShopServiceImpl();
+	}
+
+	void initializeShopsWindow() throws IOException{
 		Stage stage = (Stage) back.getScene().getWindow();
 		stage.close();
 
@@ -77,14 +89,6 @@ public class AddShopController implements Initializable {
 		window.setScene(sceneShopsWindow);
         window.setTitle(APP_NAME);
         window.show();
-
-		//MainController.setSceneShopsWindow();
-	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		messagePanel = new MessagePanel();
-		shopservice = new ShopServiceImpl();
 	}
 
 }
