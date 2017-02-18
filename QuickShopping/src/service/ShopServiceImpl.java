@@ -36,7 +36,9 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	public void remove(Shop selectedItem) {
-		databaseServices.deleteDataFromDB("quickShopping.t_sklepy", "id_sklepu = " + selectedItem.getId().toString());
+		String shopId = selectedItem.getId().toString();
+		databaseServices.deleteDataFromDB("quickShopping.t_sklepy", "id_sklepu = " + shopId);
+		databaseServices.deleteDataFromDB("quickShopping.t_sklepy_vs_kategorie", "id_sklepu = "+shopId);
 	}
 
 	@Override
