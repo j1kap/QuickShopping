@@ -85,7 +85,7 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	@Override
-	public void generateList(Shop shop, List<Product> myProductList) {
+	public List<String> generateList(Shop shop, List<Product> myProductList) {
 
 		List<Integer> productsId = new ArrayList<>();
 
@@ -93,7 +93,7 @@ public class ShopServiceImpl implements ShopService {
 			productsId.add(prod.getId());
 		}
 
-		databaseServices.sortProductByShopPriority(shop, productsId);
+		return databaseServices.sortProductByShopPriority(shop, productsId);
 	}
 
 	@Override

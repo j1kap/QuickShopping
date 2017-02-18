@@ -14,7 +14,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Product;
-import model.Shop;
 import service.ShopService;
 import service.ShopServiceImpl;
 

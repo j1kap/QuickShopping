@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +10,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import model.Product;
 import model.Shop;
 import service.ShopService;
@@ -24,6 +29,13 @@ public class GenerateProductListController implements Initializable {
 
 	MessagePanel message = new MessagePanel();
 	ShopService service = new ShopServiceImpl();
+
+	private Stage window;
+	Parent parenCustomListProductWindow;
+	Scene sceneCustomListProductWindow;
+
+	public static List<String> generetedList = new ArrayList<>();
+	public static String shopName;
 
 	List<Product> myProductList = new ArrayList<>();
 	List<Product> allProductList;
@@ -73,11 +85,31 @@ public class GenerateProductListController implements Initializable {
     	if(myProductList.size() == 0 || combo.getSelectionModel().getSelectedItem() == null) {
     		message.showErrorMessage("Nie wybrano poprawnie produktu lub sklepu");
     	} else {
-    		service.generateList(combo.getSelectionModel().getSelectedItem(),myProductList );
+    		generetedList = service.generateList(combo.getSelectionModel().getSelectedItem(),myProductList );
+    		shopName = combo.getSelectionModel().getSelectedItem().getName();
+
+    		try {
+				initializeWindow();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
     	}
     }
 
-    @FXML
+    private void initializeWindow() throws IOException {
+    	String APP_NAME = "Shop";
+        window = new Stage();
+        parenCustomListProductWindow = (Parent) FXMLLoader.load(getClass().getResource("/view/customProductListWindow.fxml"));
+        sceneCustomListProductWindow = new Scene(parenCustomListProductWindow);
+        window.setScene(sceneCustomListProductWindow);
+        window.setTitle(APP_NAME);
+        window.show();
+        MainController.hideMainWIndow();
+
+	}
+
+	@FXML
     void back(ActionEvent event) {
     	myProductList.clear();
     	setProductIntable(myProductList, myProductTable,myProduct);

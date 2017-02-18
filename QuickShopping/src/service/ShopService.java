@@ -29,7 +29,7 @@ public interface ShopService {
 
 	List<Product> getProductList();
 
-	void generateList(Shop string, List<Product> myProductList);
+	List<String> generateList(Shop string, List<Product> myProductList);
 
 	void deleteProduct(Product item);
 
