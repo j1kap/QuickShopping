@@ -24,6 +24,8 @@ public class MainController extends Application {
 	private Parent parentAddShopWindow;
 	private Parent parentAddProductWindow;
 
+	private Parent parenListProductWindow;
+
 	// okno w ktorym znajduje sie layout
 	private static Scene sceneMainWindow;
 
@@ -32,6 +34,8 @@ public class MainController extends Application {
 	private static Scene sceneGenerateProductListWindow;
 	private static Scene sceneAddShopWindow;
 	private static Scene sceneAddProductWindow;
+
+	private static Scene sceneListProductWindow;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -45,8 +49,8 @@ public class MainController extends Application {
 		sceneCategoryPositionWindow = new Scene(parentCategoryPositionWindowPane);
 		sceneGenerateProductListWindow = new Scene(parentGenerateProductListWindowPane);
 		sceneAddShopWindow = new Scene(parentAddShopWindow);
-
 		sceneAddProductWindow = new Scene(parentAddProductWindow);
+		sceneListProductWindow = new Scene(parenListProductWindow);
 
 		window.setScene(sceneMainWindow);
 		window.setTitle(APP_NAME);
@@ -65,6 +69,8 @@ public class MainController extends Application {
 					.load(getClass().getResource("/view/generateProductListWindow.fxml"));
 			parentAddShopWindow = (Parent) FXMLLoader.load(getClass().getResource("/view/addShopWindow.fxml"));
 			parentAddProductWindow = (Parent) FXMLLoader.load(getClass().getResource("/view/addProduct.fxml"));
+
+			parenListProductWindow = (Parent) FXMLLoader.load(getClass().getResource("/view/productListWindow.fxml"));
 
 		} catch (IOException e) {
 			System.out.println("Blad podczas wczytywania fxml");
@@ -106,5 +112,9 @@ public class MainController extends Application {
 
 	public static void setSceneForBackAddShop() {
 		setSceneMainWindow();
+	}
+
+	public static void setSceneProductListWindow(){
+		window.setScene(sceneListProductWindow);
 	}
 }

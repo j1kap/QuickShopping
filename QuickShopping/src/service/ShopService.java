@@ -31,4 +31,6 @@ public interface ShopService {
 
 	void generateList(Shop string, List<Product> myProductList);
 
+	void deleteProduct(Product item);
+
 }

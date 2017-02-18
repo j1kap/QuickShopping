@@ -95,4 +95,10 @@ public class ShopServiceImpl implements ShopService {
 
 		databaseServices.sortProductByShopPriority(shop, productsId);
 	}
+
+	@Override
+	public void deleteProduct(Product item) {
+		// TODO Auto-generated method stub
+
+	}
 }
