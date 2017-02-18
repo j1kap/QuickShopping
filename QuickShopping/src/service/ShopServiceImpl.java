@@ -77,4 +77,9 @@ public class ShopServiceImpl implements ShopService {
 		return databaseServices.getStringFromDBList("concat( nazwa, ' , ' , adres)", "quickShopping.t_sklepy");
 	}
 
+	@Override
+	public List<Product> getProductList() {
+		return databaseServices.getAllProducts();
+	}
+
 }

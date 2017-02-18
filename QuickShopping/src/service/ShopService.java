@@ -26,4 +26,6 @@ public interface ShopService {
 
 	List<String> getShopsName();
 
+	List<Product> getProductList();
+
 }

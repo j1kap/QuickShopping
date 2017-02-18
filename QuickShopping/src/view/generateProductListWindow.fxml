@@ -6,20 +6,20 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GenerateProductListController">
    <children>
-      <TableView layoutX="38.0" layoutY="112.0" prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="productTable" layoutX="38.0" layoutY="112.0" prefHeight="200.0" prefWidth="200.0">
         <columns>
           <TableColumn fx:id="allProduct" prefWidth="199.0" text="Lista produktów" />
         </columns>
       </TableView>
-      <TableView layoutX="305.0" layoutY="112.0" prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="myProductTable" layoutX="305.0" layoutY="112.0" prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn fx:id="mainProduct" prefWidth="199.0" text="Twoje produkty" />
+          <TableColumn fx:id="myProduct" prefWidth="199.0" text="Twoje produkty" />
         </columns>
       </TableView>
       <Button fx:id="deleteItem" layoutX="213.0" layoutY="335.0" mnemonicParsing="false" onAction="#deleteItem" text="Usuń z listy" />
       <Button fx:id="generateList" layoutX="355.0" layoutY="335.0" mnemonicParsing="false" onAction="#generateProductsList" text="Generuj liste" />
       <Button fx:id="back" layoutX="499.0" layoutY="335.0" mnemonicParsing="false" onAction="#back" text="Powrót" />
       <Button fx:id="addToMainList" layoutX="56.0" layoutY="335.0" mnemonicParsing="false" onAction="#addToList" text="Dodaj do listy" />
-      <ComboBox fx:id="combo" layoutX="63.0" layoutY="40.0" onAction="#isSelected" prefHeight="31.0" prefWidth="400.0" />
+      <ComboBox fx:id="combo" layoutX="63.0" layoutY="40.0" prefHeight="31.0" prefWidth="400.0" />
    </children>
 </Pane>

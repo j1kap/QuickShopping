@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Category;
+import model.Product;
 import model.Shop;
 
 public class DatabaseServices {
@@ -350,6 +351,34 @@ public class DatabaseServices {
 
 			}
 			return list;
+		}
+
+		public List<Product> getAllProducts() {
+			List<Product> products = new ArrayList<>();
+
+			String query = "select * from quickShopping.t_produkty";
+			Connection conn = connectionInit();
+			PreparedStatement stmt = null;
+
+			try{
+
+				stmt = conn.prepareStatement(query);
+				ResultSet resultSet = stmt.executeQuery();
+
+				 while (resultSet.next()){
+					 products.add(new Product(resultSet.getString(2), resultSet.getInt(3)));
+		         }
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					conn.close();
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return products;
 		}
 
 
