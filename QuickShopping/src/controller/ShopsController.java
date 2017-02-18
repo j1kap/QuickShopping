@@ -57,6 +57,7 @@ public class ShopsController implements Initializable {
     @FXML
     void addShop(ActionEvent event) {
     	MainController.setSceneAddShop();
+    	initialShopList();
     }
 
     @FXML
@@ -64,6 +65,7 @@ public class ShopsController implements Initializable {
 
     	if(tableShop.getSelectionModel().getSelectedItem() != null){
     		shopservice.remove(tableShop.getSelectionModel().getSelectedItem());
+    		initialShopList();
     	} else {
     		message.showErrorMessage("Nie wybrano obiektu");
     	}
@@ -121,7 +123,7 @@ public class ShopsController implements Initializable {
 
 	}
 
-	private void initialShopList() {
+	public void initialShopList() {
 		List<Shop> list = shopservice.getShopsList();
 		ObservableList<Shop> observableList = FXCollections.observableArrayList(list);
 		tableShop.setItems(observableList);

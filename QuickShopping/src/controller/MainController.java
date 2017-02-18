@@ -12,27 +12,26 @@ public class MainController extends Application {
 
 	public static final String APP_NAME = "Quick Shoppingr";
 
-	//okno aplikacji
-    private static Stage window;
+	// okno aplikacji
+	private static Stage window;
 
-    //okno dla scene
-    private Parent parentMainWindowPane;
+	// okno dla scene
+	private Parent parentMainWindowPane;
 
-    private Parent parentShopsWindowPane;
-    private Parent parentCategoryPositionWindowPane;
-    private Parent parentGenerateProductListWindowPane;
-    private Parent parentAddShopWindow;
-    private Parent parentAddProductWindow;
+	private Parent parentShopsWindowPane;
+	private Parent parentCategoryPositionWindowPane;
+	private Parent parentGenerateProductListWindowPane;
+	private Parent parentAddShopWindow;
+	private Parent parentAddProductWindow;
 
-    //okno w ktorym znajduje sie layout
-    private static Scene sceneMainWindow;
+	// okno w ktorym znajduje sie layout
+	private static Scene sceneMainWindow;
 
-    private static Scene sceneShopsWindow;
-    private static Scene sceneCategoryPositionWindow;
-    private static Scene sceneGenerateProductListWindow;
-    private static Scene sceneAddShopWindow;
-    private static Scene sceneAddProductWindow;
-
+	private static Scene sceneShopsWindow;
+	private static Scene sceneCategoryPositionWindow;
+	private static Scene sceneGenerateProductListWindow;
+	private static Scene sceneAddShopWindow;
+	private static Scene sceneAddProductWindow;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -54,15 +53,16 @@ public class MainController extends Application {
 		window.show();
 	}
 
-
 	private void initializeParent() {
 
 		try {
 			parentMainWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/view/mainWindow.fxml"));
 
 			parentShopsWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/view/shopsWindow.fxml"));
-			parentCategoryPositionWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/view/categoryPositionWindow.fxml"));
-			parentGenerateProductListWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/view/generateProductListWindow.fxml"));
+			parentCategoryPositionWindowPane = (Parent) FXMLLoader
+					.load(getClass().getResource("/view/categoryPositionWindow.fxml"));
+			parentGenerateProductListWindowPane = (Parent) FXMLLoader
+					.load(getClass().getResource("/view/generateProductListWindow.fxml"));
 			parentAddShopWindow = (Parent) FXMLLoader.load(getClass().getResource("/view/addShopWindow.fxml"));
 			parentAddProductWindow = (Parent) FXMLLoader.load(getClass().getResource("/view/addProduct.fxml"));
 
@@ -72,36 +72,39 @@ public class MainController extends Application {
 
 	}
 
-	public static void setSceneMainWindow(){
+	public static void setSceneMainWindow() {
 		window.setScene(sceneMainWindow);
 	}
 
-	public static void setSceneShopsWindow(){
+	public static void setSceneShopsWindow() {
 		window.setScene(sceneShopsWindow);
 	}
 
-	public static void setSceneCategoryPosition(){
+	public static void setSceneCategoryPosition() {
 		window.setScene(sceneCategoryPositionWindow);
 	}
 
-	public static void setSceneGenerateProductList(){
+	public static void setSceneGenerateProductList() {
 		window.setScene(sceneGenerateProductListWindow);
 	}
 
-	public static void setSceneAddShop(){
+	public static void setSceneAddShop() {
 		window.setScene(sceneAddShopWindow);
 	}
 
-	public static void hideMainWIndow(){
-        window.hide();
-    }
+	public static void hideMainWIndow() {
+		window.hide();
+	}
 
-	public static void showMainWIndow(){
-        window.show();
-    }
+	public static void showMainWindow() {
+		window.show();
+	}
 
-	public static void setSceneAddProduct(){
+	public static void setSceneAddProduct() {
 		window.setScene(sceneAddProductWindow);
 	}
 
+	public static void setSceneForBackAddShop() {
+		setSceneMainWindow();
+	}
 }

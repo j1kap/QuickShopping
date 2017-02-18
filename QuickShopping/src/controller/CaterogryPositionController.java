@@ -77,7 +77,7 @@ public class CaterogryPositionController implements Initializable {
 	void backBtn(ActionEvent event) {
 		Stage stage = (Stage) btnBack.getScene().getWindow();
 		stage.close();
-		MainController.setSceneShopsWindow();
+		MainController.showMainWindow();
 
 	}
 
