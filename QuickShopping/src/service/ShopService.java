@@ -24,4 +24,6 @@ public interface ShopService {
 
 	void addProduct(Product product);
 
+	List<String> getShopsName();
+
 }

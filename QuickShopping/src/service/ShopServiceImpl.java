@@ -18,11 +18,8 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	public void addShop(Shop shop) {
-		databaseServices.insertDataToDB("quickShopping.t_sklepy (nazwa,adres )", shop.getName(), shop.getAddress());
-		int shopId = databaseServices.getIntFromDB("id_sklepu","quickShopping.t_sklepy","nazwa="+shop.getName()+" and adres="+shop.getAddress());
-		System.out.println(shopId);
-		System.out.println(databaseServices.getRecordQuantityFromDB("quickShopping.t_kategorie"));
-
+		databaseServices.insertDataToDB("quickShopping.t_sklepy (nazwa,adres)", shop.getName(),shop.getAddress());
+		int shopId = databaseServices.getIntFromDB("id_sklepu","quickShopping.t_sklepy","nazwa='"+shop.getName()+"' and adres='"+shop.getAddress()+"'");
 		int categoryCounter = databaseServices.getRecordQuantityFromDB("quickShopping.t_kategorie");
 		for (int i = 1; i <= categoryCounter; i++)
 		{
@@ -71,6 +68,12 @@ public class ShopServiceImpl implements ShopService {
 	public void addProduct(Product product) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public List<String> getShopsName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
