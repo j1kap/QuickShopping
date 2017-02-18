@@ -10,12 +10,12 @@
    <children>
       <TableView fx:id="productTable" layoutX="10.0" layoutY="84.0" prefHeight="240.0" prefWidth="285.0">
         <columns>
-          <TableColumn fx:id="allProduct" prefWidth="278.0" text="Lista produktów" />
+          <TableColumn fx:id="allProduct" prefWidth="284.0" resizable="false" text="Lista produktów" />
         </columns>
       </TableView>
       <TableView fx:id="myProductTable" layoutX="305.0" layoutY="84.0" prefHeight="240.0" prefWidth="285.0">
         <columns>
-          <TableColumn fx:id="myProduct" prefWidth="283.0" text="Twoje produkty" />
+          <TableColumn fx:id="myProduct" prefWidth="284.0" text="Twoje produkty" />
         </columns>
       </TableView>
       <Button fx:id="deleteItem" layoutX="158.0" layoutY="326.0" mnemonicParsing="false" onAction="#deleteItem" style="-fx-background-color: #FFFFFF;">

@@ -11,7 +11,7 @@
       <TableView fx:id="table" layoutX="10.0" layoutY="64.0" prefHeight="260.0" prefWidth="580.0">
         <columns>
           <TableColumn fx:id="position" prefWidth="60.0" resizable="false" text="Pozycja" />
-          <TableColumn fx:id="name" prefWidth="520.0" resizable="false" text="Kategoria" />
+          <TableColumn fx:id="name" prefWidth="519.0" resizable="false" text="Kategoria" />
         </columns>
       </TableView>
       <Button fx:id="btnUp" layoutX="158.0" layoutY="326.0" mnemonicParsing="false" onAction="#upCategory" style="-fx-background-color: #FFFFFF;">

@@ -34,7 +34,7 @@
 			</ImageView>
 		</graphic>
 	  </Button>
-      <Label layoutX="43.0" layoutY="38.0" style="-fx-background-color: #FFFFFF;" text="Nazwa sklepu:">
+      <Label layoutX="43.0" layoutY="38.0" style="-fx-background-color: #FFFFFF;" text="Nazwa sklepu">
          <font>
             <Font name="Freestyle Script" size="32.0" />
          </font></Label>

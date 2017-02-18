@@ -32,12 +32,12 @@
 			</ImageView>
 		</graphic>
 	  </Button>
-      <Label layoutX="51.0" layoutY="14.0" text="Kategoria:">
+      <Label layoutX="51.0" layoutY="14.0" text="Kategoria">
          <font>
             <Font name="Freestyle Script" size="32.0" />
          </font>
       </Label>
-      <Label layoutX="51.0" layoutY="94.0" text="Nazwa produktu:">
+      <Label layoutX="51.0" layoutY="94.0" text="Nazwa produktu">
          <font>
             <Font name="Freestyle Script" size="32.0" />
          </font>
