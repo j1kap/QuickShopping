@@ -366,7 +366,7 @@ public class DatabaseServices {
 				ResultSet resultSet = stmt.executeQuery();
 
 				 while (resultSet.next()){
-					 products.add(new Product(resultSet.getString(2), resultSet.getInt(3)));
+					 products.add(new Product(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3)));
 		         }
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -381,6 +381,55 @@ public class DatabaseServices {
 			return products;
 		}
 
+		public List<String> sortProductByShopPriority(Shop shop, List<Integer> productIdList) {
+            Connection conn = connectionInit();
+            ArrayList<String> result = new ArrayList<String>();
+            ResultSet rs = null;
+            PreparedStatement stmt = null;
+            String queryPartOne = "SELECT P.NAZWA \n" +
+                    "FROM t_sklepy_vs_kategorie AS SK\n" +
+                    "JOIN t_kategorie AS K\n" +
+                    "JOIN t_produkty AS P\n" +
+                    "JOIN t_sklepy AS S\n" +
+                    "WHERE SK.id_kategorii = K.id_kategorii\n" +
+                    "AND P.id_kategorii = K.id_kategorii\n" +
+                    "AND S.id_sklepu = SK.id_sklepu\n" +
+                    "AND S.id_sklepu = ?\n" +
+                    "AND P.id_produktu IN (" ;
+            String queryPartTwo = ") order by SK.priorytet";
+
+            for(Integer productId : productIdList) {
+                queryPartOne = queryPartOne + "?,";
+            }
+            queryPartOne = queryPartOne.substring(0,queryPartOne.length() - 1);
 
 
+            try {
+                stmt = conn.prepareStatement(queryPartOne + queryPartTwo);
+                stmt.setInt(1,shop.getId());
+
+
+                for(int i = 1;i<=productIdList.size();i++) {
+                    stmt.setInt(1 + i,productIdList.get(i-1));
+                }
+
+                rs = stmt.executeQuery();
+                while(rs.next()) {
+                    result.add(rs.getString("NAZWA"));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    conn.close();
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+            return result;
+
+        }
 }

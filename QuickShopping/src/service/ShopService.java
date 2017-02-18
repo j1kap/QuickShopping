@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 
+import javafx.collections.ObservableList;
 import model.Category;
 import model.Product;
 import model.Shop;
@@ -27,5 +28,7 @@ public interface ShopService {
 	List<String> getShopsName();
 
 	List<Product> getProductList();
+
+	void generateList(Shop string, List<Product> myProductList);
 
 }

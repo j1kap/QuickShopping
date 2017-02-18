@@ -29,7 +29,7 @@ public class GenerateProductListController implements Initializable {
 	List<Product> allProductList;
 
     @FXML
-    private ComboBox<String> combo;
+    private ComboBox<Shop> combo;
 
     @FXML
     private Button deleteItem;
@@ -70,7 +70,11 @@ public class GenerateProductListController implements Initializable {
 
     @FXML
     void generateProductsList(ActionEvent event) {
-
+    	if(myProductList.size() == 0 || combo.getSelectionModel().getSelectedItem() == null) {
+    		message.showErrorMessage("Nie wybrano poprawnie produktu lub sklepu");
+    	} else {
+    		service.generateList(combo.getSelectionModel().getSelectedItem(),myProductList );
+    	}
     }
 
     @FXML
@@ -122,8 +126,8 @@ public class GenerateProductListController implements Initializable {
 	}
 
 	void initialiceShopList(){
-		List<String> list = service.getShopsName();
-		ObservableList<String> observableList = FXCollections.observableArrayList(list);
+		List<Shop> list = service.getShopsList();
+		ObservableList<Shop> observableList = FXCollections.observableArrayList(list);
 		combo.setItems(observableList);
 	}
 

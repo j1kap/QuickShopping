@@ -1,9 +1,11 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import controller.DatabaseServices;
+import javafx.collections.ObservableList;
 import model.Category;
 import model.Product;
 import model.Shop;
@@ -82,4 +84,15 @@ public class ShopServiceImpl implements ShopService {
 		return databaseServices.getAllProducts();
 	}
 
+	@Override
+	public void generateList(Shop shop, List<Product> myProductList) {
+
+		List<Integer> productsId = new ArrayList<>();
+
+		for(Product prod : myProductList){
+			productsId.add(prod.getId());
+		}
+
+		databaseServices.sortProductByShopPriority(shop, productsId);
+	}
 }
