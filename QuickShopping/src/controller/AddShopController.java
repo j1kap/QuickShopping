@@ -2,13 +2,18 @@ package controller;
 
 import javafx.fxml.Initializable;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import model.Shop;
 import service.ShopService;
 import service.ShopServiceImpl;
@@ -29,6 +34,10 @@ public class AddShopController implements Initializable {
 
 	@FXML
 	private TextField shopAddress;
+
+	private Stage window;
+	private static Scene sceneShopsWindow;
+	private Parent parentShopsWindowPane;
 
 	@FXML
 	void add(ActionEvent event) {
@@ -57,8 +66,19 @@ public class AddShopController implements Initializable {
 	}
 
 	@FXML
-	void back(ActionEvent event) {
-		MainController.setSceneShopsWindow();
+	void back(ActionEvent event) throws IOException {
+		Stage stage = (Stage) back.getScene().getWindow();
+		stage.close();
+
+		String APP_NAME = "Shop";
+        window = new Stage();
+    	parentShopsWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/view/shopsWindow.fxml"));
+		sceneShopsWindow = new Scene(parentShopsWindowPane);
+		window.setScene(sceneShopsWindow);
+        window.setTitle(APP_NAME);
+        window.show();
+
+		//MainController.setSceneShopsWindow();
 	}
 
 	@Override
